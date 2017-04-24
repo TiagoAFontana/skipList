@@ -14,10 +14,13 @@ public:
     SkipList(float probability = 0.5, int maxLevel = 32);
 
     void insert(int key);
-    void erase(int key);
+    int erase(int key);
+
+    void remove_first();
 
     Node* find(int key);
     void print();
+    int size();
 private:
 
     Node* head_; //first node

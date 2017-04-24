@@ -56,7 +56,7 @@ void SkipList::insert(int key)
     }
 }
 
-void SkipList::erase(int key)
+int SkipList::erase(int key)
 {
     // vector of pointers that needs to be updated to account for the deleted node
     std::vector<Node*> update(head_->forwards_);
@@ -85,7 +85,16 @@ void SkipList::erase(int key)
             update[i]->forwards_[i] = x->forwards_[i];
         }
         delete x;
+    }else{
+        return -1;
     }
+
+}
+
+void SkipList::remove_first()
+{
+    Node* x = head_->forwards_[0];
+    erase(x->key());
 }
 
 Node* SkipList::find(int key)
@@ -126,6 +135,17 @@ void SkipList::print()
 //        if (++lineLenght % 2 == 0) std::cout <<"\n";
     }
     std::cout <<"}\n";
+}
+
+int SkipList::size()
+{
+    Node* list = head_;
+    int size = 0;
+    while (list->forwards_[0] != NULL) {
+        size ++;
+        list = list->forwards_[0];
+    }
+    return size;
 }
 
 int SkipList::ramdomLevel()
