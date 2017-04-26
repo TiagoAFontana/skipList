@@ -127,12 +127,7 @@ void SkipList::print()
         std::cout <<", key: "<< list->forwards_[0]->key()
                   <<", level: "<< nodeLevel(list->forwards_) //<< "\n";
                   <<", levelSet: "<< list->forwards_[0]->level() << "\n";
-
         list = list->forwards_[0];
-
-//        if (list->forwards_[0] != NULL) std::cout <<" : ";
-
-//        if (++lineLenght % 2 == 0) std::cout <<"\n";
     }
     std::cout <<"}\n";
 }
