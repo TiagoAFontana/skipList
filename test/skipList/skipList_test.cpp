@@ -85,3 +85,49 @@ TEST_CASE("Running Skip List to random set of 256 elements","[skipList]"){
     }
     std::cout << "\n";
 }
+
+TEST_CASE("Running Skip List to random set of more elements","[extra]"){
+    std::cout << "Insert 2176 (us),Delete(us)\n";
+    for (int k = 0; k < 30; ++k) {
+        SkipList s; // Initialize an empty Skip_list object
+        std::srand(0); //initialize random
+        //initialize timer structures
+        std::unique_ptr<Runtime> runtime = std::unique_ptr<Runtime>(new Runtime());
+        runtime->start(); //initi time stamp
+        for (int i = 0; i < 2176; ++i){ // insert 2176 elements
+            s.insert(std::rand());
+        }
+        runtime->end();
+        runtime->print_result();
+        std::cout << ",";
+        runtime->start();
+        for (int i = 0; i < 435; ++i){ //erase 20%
+            s.remove_first();
+        }
+        runtime->end();
+        runtime->print_result();
+        std::cout << "\n";
+    }
+    std::cout << "\nInsert 34816 (us),Delete(us)\n";
+    for (int k = 0; k < 30; ++k) {
+        SkipList s; // Initialize an empty Skip_list object
+        std::srand(0); //initialize random
+        //initialize timer structures
+        std::unique_ptr<Runtime> runtime = std::unique_ptr<Runtime>(new Runtime());
+        runtime->start(); //initi time stamp
+        for (int i = 0; i < 34816; ++i){ // insert 34816 elements
+            s.insert(std::rand());
+        }
+        runtime->end();
+        runtime->print_result();
+        std::cout << ",";
+        runtime->start();
+        for (int i = 0; i < 6963; ++i){ //erase 20%
+            s.remove_first();
+        }
+        runtime->end();
+        runtime->print_result();
+        std::cout << "\n";
+    }
+    std::cout << "\n";
+}
